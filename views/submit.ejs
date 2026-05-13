@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+
+  <main class="container">
+
+    <section class="hero-card submit-card">
+
+      <p class="eyebrow">Confessional</p>
+
+      <h1>Leave another truth behind</h1>
+
+      <p class="description">
+        Some truths are easier to speak in the dark.
+        Your confession remains anonymous.
+      </p>
+
+      <form action="/submit" method="POST" class="submit-form">
+
+        <div class="secret-input-wrap">
+
+          <textarea name="secret" class="secret-input" placeholder="What have you never said out loud?"
+            required></textarea>
+
+        </div>
+
+        <div class="button-group submit-buttons">
+
+          <button type="submit" class="btn btn-primary">
+            Reveal Your Secret
+          </button>
+
+          <a class="btn btn-secondary" href="/secrets">
+            Return
+          </a>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <%- include('partials/footer') %>

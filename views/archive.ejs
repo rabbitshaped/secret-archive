@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+
+    <main class="archive-container">
+
+        <section class="archive-header">
+
+            <p class="eyebrow">Archive</p>
+
+            <h1>Fragments Left Behind</h1>
+
+        </section>
+
+        <section class="secret-grid">
+
+            <% secrets.forEach(secret=> { %>
+
+                <article class="secret-card">
+
+                    <div class="secret-content">
+                        <p>
+                            <%= secret.secret_text %>
+                        </p>
+                    </div>
+
+                    <form action="/delete-secret/<%= secret.id %>" method="POST">
+                        <button class="delete-btn">
+                            Delete
+                        </button>
+                    </form>
+
+                </article>
+
+                <% }) %>
+
+        </section>
+
+    </main>
+
+    <%- include('partials/footer') %>

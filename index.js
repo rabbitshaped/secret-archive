@@ -96,6 +96,14 @@ app.get("/submit", (req, res) => {
 	}
 });
 
+app.get("/empty", (req, res) => {
+	if (!req.isAuthenticated()) {
+		return res.redirect("/login");
+	}
+
+	res.render("empty.ejs");
+});
+
 app.get("/archive", async (req, res) => {
 	if (!req.isAuthenticated()) {
 		return res.redirect("/login");
@@ -207,6 +215,38 @@ app.post("/submit", async (req, res) => {
 	} catch (err) {
 		console.log(err);
 		res.redirect("/login");
+	}
+});
+
+app.post("/delete-secret/:id", async (req, res) => {
+	if (!req.isAuthenticated()) {
+		return res.redirect("/login");
+	}
+
+	const secretId = req.params.id;
+
+	try {
+		await db.query(
+			`DELETE FROM secrets
+			 WHERE id = $1
+			 AND user_id = $2`,
+			[secretId, req.user.id],
+		);
+
+		const remainingSecrets = await db.query(
+			"SELECT * FROM secrets WHERE user_id = $1",
+			[req.user.id],
+		);
+
+		if (remainingSecrets.rows.length === 0) {
+			return res.redirect("/empty");
+		}
+
+		res.redirect("/archive");
+	} catch (err) {
+		console.log(err);
+
+		res.status(500).send("Could not delete secret");
 	}
 });
 

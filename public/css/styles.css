@@ -1,26 +1,9 @@
-/*edits body {
-	background-color: #e8ecef;
-}
-
-.centered {
-	padding-top: 200px;
-	text-align: center;
-}
-
-.secret-text {
-	text-align: center;
-	font-size: 2rem;
-	color: #fff;
-	background-color: #000;
-}
-
-*/
+/*edits body { background-color: #e8ecef; } .centered { padding-top: 200px; text-align: center; } .secret-text { text-align: center; font-size: 2rem; color: #fff; background-color: #000; } */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-
 :root {
 	--bg-overlay: rgba(17, 13, 28, 0.45);
 	--card-bg: rgba(20, 18, 35, 0.55);
@@ -33,16 +16,12 @@
 	--shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 	--blur: blur(10px);
 }
-
 body {
 	min-height: 100vh;
 	font-family: "Inter", sans-serif;
-	color: var(--text-main);
-
-	/* background:
-		linear-gradient(var(--bg-overlay), var(--bg-overlay)),
-		url("../images/mysterious-alley.png"); */
-
+	color: var(
+		--text-main
+	); /* background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url("../images/mysterious-alley.png"); */
 	background:
 		radial-gradient(
 			circle at 30% 40%,
@@ -52,52 +31,42 @@ body {
 		radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.35), transparent 55%),
 		linear-gradient(rgba(10, 10, 15, 0.6), rgba(10, 10, 15, 0.8)),
 		url("../images/mysterious-alley.png");
-
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	padding: 2rem;
 	overflow: hidden;
 }
-
 body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
 	pointer-events: none;
-
 	background: radial-gradient(
 		circle at 35% 50%,
 		rgba(255, 220, 180, 0.18),
 		transparent 45%
 	);
-
 	mix-blend-mode: screen;
 	opacity: 0.9;
 }
-
 body::after {
 	content: "";
 	position: fixed;
 	inset: 0;
 	pointer-events: none;
-
 	background: radial-gradient(
 		circle at center,
 		transparent 40%,
 		rgba(0, 0, 0, 0.55) 100%
 	);
 }
-
 #another {
 	color: var(--accent);
 }
-
 .container {
 	width: 100%;
 	max-width: 1600px;
@@ -106,22 +75,17 @@ body::after {
 	align-items: center;
 	padding-left: 8vw;
 }
-
 .hero-card {
 	width: min(460px, 100%);
 	padding: 3rem;
 	border-radius: 32px;
 	background: var(--card-bg);
 	border: 1px solid var(--border);
-
 	backdrop-filter: var(--blur);
 	-webkit-backdrop-filter: var(--blur);
-
 	box-shadow: var(--shadow);
-
 	animation: fadeUp 0.9s ease;
 }
-
 .eyebrow {
 	color: var(--accent);
 	font-size: 0.85rem;
@@ -129,9 +93,7 @@ body::after {
 	text-transform: uppercase;
 	margin-bottom: 1rem;
 	opacity: 0.9;
-}
-
-/* FONTS  */
+} /* FONTS */
 h1 {
 	font-family: "Cormorant Garamond", serif;
 	font-size: clamp(3.5rem, 8vw, 5.5rem);
@@ -140,7 +102,6 @@ h1 {
 	margin-bottom: 1.2rem;
 	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
-
 h2 {
 	font-family: "Cormorant Garamond", serif;
 	font-size: clamp(1.5rem, 4vw, 3.5rem);
@@ -149,7 +110,6 @@ h2 {
 	margin-bottom: 2rem;
 	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
-
 .description {
 	font-size: clamp(1rem, 2vw, 1.1rem);
 	line-height: 1.7;
@@ -157,13 +117,11 @@ h2 {
 	margin-bottom: 2.5rem;
 	max-width: 32ch;
 }
-
 .button-group {
 	display: flex;
 	gap: 1rem;
 	flex-wrap: wrap;
 }
-
 .btn {
 	text-decoration: none;
 	border-radius: 999px;
@@ -175,29 +133,24 @@ h2 {
 	font-size: 0.95rem;
 	letter-spacing: 0.02em;
 }
-
 .btn-primary {
 	background: var(--accent);
 	color: #231915;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
-
 .btn-primary:hover {
 	background: var(--accent-hover);
 	transform: translateY(-2px);
 }
-
 .btn-secondary {
 	background: var(--button-dark);
 	color: var(--text-main);
 	border-color: rgba(255, 255, 255, 0.12);
 }
-
 .btn-secondary:hover {
 	background: rgba(255, 255, 255, 0.14);
 	transform: translateY(-2px);
 }
-
 @keyframes fadeUp {
 	from {
 		opacity: 0;
@@ -207,74 +160,55 @@ h2 {
 		opacity: 1;
 		transform: translateY(0);
 	}
-}
-
-/* Tablet */
+} /* Tablet */
 @media (max-width: 900px) {
 	.container {
 		/* justify-content: center; */
 		padding-right: 0;
 	}
-
 	.hero-card {
 		padding: 2.5rem;
 	}
-}
-
-/* Mobile */
+} /* Mobile */
 @media (max-width: 600px) {
 	body {
 		padding: 1rem;
 		align-items: flex-end;
 	}
-
 	.hero-card {
 		padding: 2rem;
 		border-radius: 28px;
 	}
-
 	h1 {
 		margin-bottom: 0.8rem;
 	}
-
 	.description {
 		margin-bottom: 2rem;
 	}
-
 	.button-group {
 		flex-direction: column;
 	}
-
 	.btn {
 		width: 100%;
 		text-align: center;
 	}
-}
-
-/* new edits */
+} /* new edits */
 .hero-card {
 	width: min(460px, 100%);
 	padding: 3rem;
 	border-radius: 32px;
-
 	background: rgba(24, 20, 38, 0.38);
 	border: 1px solid rgba(255, 255, 255, 0.1);
-
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
-
 	box-shadow:
 		0 10px 40px rgba(0, 0, 0, 0.35),
 		inset 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-/* SMALL WINDOW LAYOUT FOR LOGIN AND REGISTRATION */
+} /* SMALL WINDOW LAYOUT FOR LOGIN AND REGISTRATION */
 .login-card,
 .register-card {
 	max-width: 500px;
-}
-
-/* FORM */
+} /* FORM */
 .login-form,
 .register-form {
 	display: flex;
@@ -282,19 +216,16 @@ h2 {
 	gap: 1.4rem;
 	margin-top: 1rem;
 }
-
 .input-group {
 	display: flex;
 	flex-direction: column;
 	gap: 0.55rem;
 }
-
 .input-group label {
 	font-size: 0.9rem;
 	letter-spacing: 0.04em;
 	color: var(--text-soft);
 }
-
 .input-group input {
 	width: 100%;
 	padding: 1rem 1.1rem;
@@ -311,11 +242,9 @@ h2 {
 		background 0.25s ease,
 		transform 0.25s ease;
 }
-
 .input-group input::placeholder {
 	color: rgba(255, 255, 255, 0.4);
 }
-
 .input-group input:focus {
 	outline: none;
 	border-color: rgba(215, 176, 138, 0.55);
@@ -324,9 +253,7 @@ h2 {
 	box-shadow:
 		0 0 0 4px rgba(215, 176, 138, 0.08),
 		0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* GOOGLE BUTTON */
+} /* GOOGLE BUTTON */
 .google-btn {
 	display: flex;
 	align-items: center;
@@ -342,181 +269,117 @@ h2 {
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	transition: all 0.25s ease;
 }
-
 .google-btn:hover {
 	background: rgba(255, 255, 255, 0.14);
 	color: var(--accent);
 	text-decoration: none;
 	transform: translateY(-2px);
-}
-
-/* DIVIDER */
-
+} /* DIVIDER */
 .divider {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-
 	margin: 1.8rem 0;
-
 	color: rgba(255, 255, 255, 0.45);
-
 	font-size: 0.85rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
-
 .divider::before,
 .divider::after {
 	content: "";
 	flex: 1;
 	height: 1px;
 	background: rgba(255, 255, 255, 0.08);
-}
-
-/* LOGIN BUTTON */
-
+} /* LOGIN BUTTON */
 .login-btn {
 	width: 100%;
 	margin-top: 0.5rem;
-}
-
-/* SECRETS PAGE */
-
+} /* SECRETS PAGE */
 .secret-card {
 	width: min(760px, 100%);
 	text-align: center;
 	padding: 4rem;
-
 	border-radius: 36px;
-
 	background: linear-gradient(
 		to bottom,
 		rgba(24, 20, 38, 0.42),
 		rgba(24, 20, 38, 0.32)
 	);
-
 	border: 1px solid rgba(255, 255, 255, 0.08);
-
 	backdrop-filter: blur(16px);
 	-webkit-backdrop-filter: blur(16px);
-
 	box-shadow:
 		0 20px 60px rgba(0, 0, 0, 0.45),
 		inset 0 1px 1px rgba(255, 255, 255, 0.04);
-
 	position: relative;
 	overflow: hidden;
-}
-
-/* SECRET REVEAL AREA */
+	position: relative;
+	z-index: 1;
+} /* SECRET REVEAL AREA */
 .secret-reveal {
 	position: relative;
-
 	margin: 2.8rem 0;
-
 	padding: 2rem 0;
-
 	border-radius: 24px;
-
 	background: transparent;
-
 	border-top: 1px solid rgba(255, 255, 255, 0.06);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-
 	overflow: hidden;
-}
-
-/* subtle glowing fog */
-
+} /* subtle glowing fog */
 .secret-reveal::before {
 	content: "";
-
 	position: absolute;
 	inset: -30%;
-
 	background: radial-gradient(
 		circle,
 		rgba(255, 220, 180, 0.12),
 		transparent 60%
 	);
-
 	filter: blur(40px);
-
 	animation: pulseFog 6s ease-in-out infinite;
-}
-
-/* mysterious text reveal */
-
+} /* mysterious text reveal */
 .secret-text {
 	position: relative;
-
 	font-size: clamp(1.3rem, 2.5vw, 1.9rem);
-
 	line-height: 1.9;
-
 	font-family: "Cormorant Garamond", serif;
-
 	color: var(--accent-hover);
-
 	max-width: 34ch;
-
 	margin-inline: auto;
-
 	opacity: 0;
-
 	letter-spacing: 0.45em;
-
 	filter: blur(16px);
-
 	animation: secretReveal 3.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-
 	text-shadow:
 		0 0 18px rgba(255, 255, 255, 0.05),
 		0 0 30px rgba(215, 176, 138, 0.08);
-}
-
-/* BUTTONS */
-
+} /* BUTTONS */
 .secrets-buttons {
 	justify-content: center;
 	margin-top: 2rem;
-}
-
-/* ANIMATIONS */
-
+} /* ANIMATIONS */
 @keyframes secretReveal {
 	0% {
 		opacity: 0;
-
 		letter-spacing: 0.6em;
-
 		filter: blur(18px);
-
 		transform: scale(1.08) translateY(10px);
 	}
-
 	35% {
 		opacity: 0.45;
 	}
-
 	100% {
 		opacity: 1;
-
 		letter-spacing: 0.08em;
-
 		filter: blur(0);
-
 		transform: translateY(0) scale(1);
 	}
 }
-
 .secret-reveal::before {
 	content: "";
-
 	position: absolute;
 	inset: -40%;
-
 	background:
 		radial-gradient(
 			circle at center,
@@ -528,38 +391,25 @@ h2 {
 			rgba(255, 255, 255, 0.06),
 			transparent 35%
 		);
-
 	filter: blur(55px);
-
 	animation: pulseFog 7s ease-in-out infinite;
 }
-
 .secret-card h1 {
 	font-family: "Cormorant Garamond", serif;
-
 	font-size: clamp(1.7rem, 3vw, 2.7rem);
-
 	line-height: 1.15;
 	font-weight: 600;
-
 	letter-spacing: -0.01em;
-
 	max-width: 16ch;
-
 	margin-inline: auto;
 	margin-bottom: 1.2rem;
-
 	text-align: center;
-
 	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
 }
-
 .secret-card::before {
 	content: "";
-
 	position: absolute;
 	inset: -20%;
-
 	background:
 		radial-gradient(
 			circle at top left,
@@ -571,309 +421,218 @@ h2 {
 			rgba(255, 255, 255, 0.03),
 			transparent 30%
 		);
-
 	filter: blur(50px);
-
 	pointer-events: none;
-}
-
-/* SUBMIT PAGE */
-
+} /* SUBMIT PAGE */
 .submit-card {
 	max-width: 760px;
-}
-
-/* FORM */
-
+} /* FORM */
 .submit-form {
 	margin-top: 2rem;
-}
-
-/* SECRET INPUT AREA */
-
+} /* SECRET INPUT AREA */
 .secret-input-wrap {
 	position: relative;
-}
-
-/* atmospheric glow */
-
+} /* atmospheric glow */
 .secret-input-wrap::before {
 	content: "";
-
 	position: absolute;
 	inset: -20%;
-
 	background: radial-gradient(
 		circle,
 		rgba(215, 176, 138, 0.08),
 		transparent 60%
 	);
-
 	filter: blur(45px);
-
 	pointer-events: none;
-}
-
-/* TEXTAREA */
-
+} /* TEXTAREA */
 .secret-input {
 	position: relative;
-
 	width: 100%;
 	min-height: 220px;
-
 	padding: 1.6rem;
-
 	border-radius: 28px;
-
 	border: 1px solid rgba(255, 255, 255, 0.08);
-
 	background: linear-gradient(
 		to bottom,
 		rgba(255, 255, 255, 0.05),
 		rgba(255, 255, 255, 0.025)
 	);
-
 	color: var(--text-main);
-
 	font-size: 1.1rem;
 	line-height: 1.8;
-
 	font-family: "Cormorant Garamond", serif;
-
 	resize: vertical;
-
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-
 	transition:
 		border-color 0.3s ease,
 		background 0.3s ease,
 		box-shadow 0.3s ease;
 }
-
 .secret-input::placeholder {
 	color: rgba(255, 255, 255, 0.35);
-
 	letter-spacing: 0.04em;
 }
-
 .secret-input:focus {
 	outline: none;
-
 	border-color: rgba(215, 176, 138, 0.45);
-
 	background: linear-gradient(
 		to bottom,
 		rgba(255, 255, 255, 0.07),
 		rgba(255, 255, 255, 0.03)
 	);
-
 	box-shadow:
 		0 0 0 4px rgba(215, 176, 138, 0.06),
 		0 20px 50px rgba(0, 0, 0, 0.25);
-}
-
-/* BUTTONS */
-
+} /* BUTTONS */
 .submit-buttons {
 	justify-content: center;
-
 	margin-top: 2rem;
-}
-
-/* ARCHIVE LAYOUT */
-
+} /* ARCHIVE LAYOUT */
 .archive-container {
 	width: 100%;
 	max-width: 1600px;
-
 	padding: 4rem 6vw;
-}
-
-/* HEADER */
-
+} /* HEADER */
 .archive-header {
 	margin-bottom: 4rem;
 }
-
 .archive-header h1 {
 	font-size: clamp(2.5rem, 4vw, 4rem);
-
 	max-width: 100ch;
-}
-
-/* GRID */
-
+} /* GRID */
 .secret-grid {
 	display: grid;
-
 	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
 	gap: 2rem;
-}
-
-/* SECRET CARDS */
-
+} /* SECRET CARDS */
 .secret-card {
 	position: relative;
 	overflow: hidden;
 	padding: 2rem;
-
+	isolation: isolate;
 	min-height: 260px;
-
 	border-radius: 30px;
-
 	background: linear-gradient(
 		to bottom,
 		rgba(24, 20, 38, 0.42),
 		rgba(24, 20, 38, 0.28)
 	);
-
 	border: 1px solid rgba(255, 255, 255, 0.08);
-
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
-
 	transition:
 		transform 0.35s ease,
 		border-color 0.35s ease,
 		box-shadow 0.35s ease;
-}
-
-/* subtle glow */
-
+} /* subtle glow */
 .secret-card::before {
 	content: "";
-
 	position: absolute;
 	inset: -30%;
-
 	background: radial-gradient(
 		circle,
 		rgba(215, 176, 138, 0.08),
 		transparent 60%
 	);
-
 	filter: blur(40px);
-
 	opacity: 0;
-
 	transition: opacity 0.4s ease;
-}
-
-/* hover glow */
-
+} /* hover glow */
 .secret-card:hover::before {
 	opacity: 1;
-}
-
-/* hover lift */
-
+} /* hover lift */
 .secret-card:hover {
 	transform: translateY(-4px);
-
 	border-color: rgba(215, 176, 138, 0.18);
-
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
-}
-
-/* SECRET TEXT */
-
+	z-index: 10;
+} /* SECRET TEXT */
 .secret-content {
 	position: relative;
-
 	height: 100%;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	text-align: center;
 }
-
 .secret-card:hover .secret-content p {
 	filter: blur(0.5px);
-
 	opacity: 1;
-
 	letter-spacing: 0.01em;
-}
-
-/* blurred by default */
-
+} /* blurred by default */
 .secret-content p {
 	font-family: "Cormorant Garamond", serif;
-
 	font-size: 1.5rem;
 	line-height: 1.7;
-
 	color: rgba(244, 239, 233, 0.92);
-
 	filter: blur(12px);
-
 	opacity: 0.45;
-
 	letter-spacing: 0.12em;
-
 	transition:
 		filter 0.45s ease,
 		opacity 0.45s ease,
 		letter-spacing 0.45s ease;
-
 	backface-visibility: hidden;
 	-webkit-font-smoothing: antialiased;
-
 	will-change: filter, opacity, letter-spacing;
-
 	transform: translateZ(0);
-}
-
-/* reveal on hover */
-
+} /* reveal on hover */
 .secret-card:hover .secret-content p {
 	filter: blur(0.5px);
-
 	opacity: 1;
-
 	letter-spacing: 0.02em;
-}
-
-/* DELETE BUTTON */
-
+} /* DELETE BUTTON */
 .delete-btn {
 	position: absolute;
-
 	bottom: 1.2rem;
 	right: 1.2rem;
-
 	border: none;
-
 	padding: 0.7rem 1rem;
-
 	border-radius: 999px;
-
 	background: rgba(255, 255, 255, 0.06);
-
 	color: rgba(255, 255, 255, 0.7);
-
 	cursor: pointer;
-
 	opacity: 0;
-
 	transition:
 		opacity 0.3s ease,
 		background 0.3s ease;
-}
-
-/* only visible on hover */
-
+} /* only visible on hover */
 .secret-card:hover .delete-btn {
 	opacity: 1;
 }
-
 .delete-btn:hover {
 	background: rgba(180, 40, 40, 0.22);
-
 	color: white;
+} /* Empty page */
+.empty-card {
+	text-align: left;
+	max-width: 700px;
+	background: rgba(10, 10, 16, 0.65);
+}
+.empty-visual {
+	position: relative;
+	height: 120px;
+	margin: 2rem 0;
+	overflow: hidden;
+}
+.faint-glow {
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(
+		circle at center,
+		rgba(215, 176, 138, 0.08),
+		transparent 60%
+	);
+	filter: blur(40px);
+	opacity: 0.6;
+}
+.silent-line {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60%;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.06);
 }

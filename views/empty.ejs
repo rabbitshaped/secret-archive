@@ -1,41 +1,29 @@
 <%- include('partials/header') %>
 
-
     <main class="container">
 
-        <section class="hero-card submit-card">
+        <section class="hero-card empty-card">
 
-            <p class="eyebrow">Confessional</p>
+            <p class="eyebrow">Vault Status</p>
 
-            <h1>Leave another truth behind</h1>
+            <h1>Nothing has been recorded</h1>
 
             <p class="description">
-                Some truths are easier to speak in the dark.
-                Your confession remains anonymous.
+                The archive is currently empty.
+                No confessions have been stored under your identity.
             </p>
 
-            <form action="/submit" method="POST" class="submit-form">
+            <div class="button-group">
 
-                <div class="secret-input-wrap">
+                <a class="btn btn-primary" href="/submit">
+                    Create First Entry
+                </a>
 
-                    <textarea name="secret" class="secret-input" placeholder="What have you never said out loud?"
-                        required></textarea>
+                <a class="btn btn-secondary" href="/">
+                    Return
+                </a>
 
-                </div>
-
-                <div class="button-group submit-buttons">
-
-                    <button type="submit" class="btn btn-primary">
-                        Reveal Your Secret
-                    </button>
-
-                    <a class="btn btn-secondary" href="/secrets">
-                        Return
-                    </a>
-
-                </div>
-
-            </form>
+            </div>
 
         </section>
 

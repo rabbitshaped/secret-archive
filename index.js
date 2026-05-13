@@ -57,24 +57,33 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/secrets", async (req, res) => {
-	if (req.isAuthenticated()) {
-		try {
-			const result = await db.query(
-				"SELECT secret FROM users WHERE email = $1",
-				[req.user.email],
-			);
-			console.log(result);
-			const secret = result.rows[0].secret;
-			if (secret) {
-				res.render("secrets.ejs", { secret: secret });
-			} else {
-				//if they are a new user with no secret submitted yet
-				res.render("secrets.ejs", { secret: "Default secret here" });
-			}
-		} catch (err) {
-			console.log(err);
+	if (!req.isAuthenticated()) {
+		return res.redirect("/login");
+	}
+
+	try {
+		const allSecrets = await db.query(
+			"SELECT * FROM secrets WHERE user_id = $1 ORDER BY created_at DESC",
+			[req.user.id],
+		);
+
+		const secrets = allSecrets.rows;
+
+		// NO secrets yet
+		if (secrets.length === 0) {
+			return res.render("empty.ejs");
 		}
-	} else {
+
+		// NEWEST secret
+
+		const secret = secrets[0].secret_text;
+
+		res.render("secrets.ejs", {
+			secret: secret,
+			secretCount: secrets.length,
+		});
+	} catch (err) {
+		console.log(err);
 		res.redirect("/login");
 	}
 });
@@ -84,6 +93,47 @@ app.get("/submit", (req, res) => {
 		res.render("submit.ejs");
 	} else {
 		res.redirect("/login");
+	}
+});
+
+app.get("/archive", async (req, res) => {
+	if (!req.isAuthenticated()) {
+		return res.redirect("/login");
+	}
+
+	try {
+		const result = await db.query(
+			`SELECT *
+			 FROM secrets
+			 WHERE user_id = $1
+			 ORDER BY created_at DESC`,
+			[req.user.id],
+		);
+
+		const secrets = result.rows;
+
+		/* no secrets */
+
+		if (secrets.length === 0) {
+			return res.redirect("/empty");
+		}
+
+		/*
+		   if only one secret,
+		   archive is pointless
+		*/
+
+		if (secrets.length === 1) {
+			return res.redirect("/secrets");
+		}
+
+		res.render("archive.ejs", {
+			secrets: secrets,
+		});
+	} catch (err) {
+		console.log(err);
+
+		res.status(500).send("Server error");
 	}
 });
 
@@ -120,7 +170,7 @@ app.post("/register", async (req, res) => {
 		]);
 
 		if (checkResult.rows.length > 0) {
-			req.redirect("/login");
+			res.redirect("/login");
 		} else {
 			bcrypt.hash(password, saltRounds, async (err, hash) => {
 				if (err) {
@@ -140,6 +190,7 @@ app.post("/register", async (req, res) => {
 		}
 	} catch (err) {
 		console.log(err);
+		res.redirect("/login");
 	}
 });
 
@@ -148,13 +199,14 @@ app.post("/submit", async (req, res) => {
 	console.log(req.user);
 
 	try {
-		await db.query("UPDATE users SET secret = $1 WHERE email = $2", [
-			secret,
-			req.user.email,
-		]);
+		await db.query(
+			"INSERT INTO secrets (user_id, secret_text) VALUES ($1, $2)",
+			[req.user.id, secret],
+		);
 		res.redirect("/secrets");
 	} catch (err) {
 		console.log(err);
+		res.redirect("/login");
 	}
 });
 
@@ -181,10 +233,11 @@ passport.use(
 					}
 				});
 			} else {
-				return cb("User not found");
+				return cb(null, false);
 			}
 		} catch (err) {
 			console.log(err);
+			res.redirect("/login");
 		}
 	}),
 );
@@ -206,7 +259,7 @@ passport.use(
 				]);
 				if (result.rows.length === 0) {
 					const newUser = await db.query(
-						"INSERT INTO users (email, password) VALUES ($1, $2)",
+						"INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *",
 						[profile.email, "google"],
 					);
 					return cb(null, newUser.rows[0]);

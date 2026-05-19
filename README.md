@@ -1,10 +1,11 @@
-
 # 🔐 Confessional Secrets App
 
 A minimal anonymous-style confession app where users can submit “secrets”, view them, and manage them in a private archive. Built with Node.js, Express, PostgreSQL, and EJS.
 Expanded from 9.6 Secrets Project from "The Complete Full-Stack Web Development Bootcamp" on Udemy by Angela Yu from the App Brewery. The design focuses on simplicity, atmospheric UI, and fast interactions (no unnecessary steps between writing and seeing your submission).
 
 ---
+
+https://github.com/user-attachments/assets/d2d649e3-dbda-41c4-9987-7bbed4d9a552
 
 ## ✨ Features
 
@@ -25,11 +26,6 @@ Each user has a private collection of secrets. The app is designed so users inte
 - or their personal archive
 
 No public feed or cross-user visibility exists.
-
-<img width="400" alt="Secret Archive Home" src="https://github.com/user-attachments/assets/d494fd4d-f4f7-4e58-812a-71c2a74c4592" />
-<img width="400" alt="Register Screen" src="https://github.com/user-attachments/assets/32c5139d-3434-4472-89bf-db926fd5e51b" />
-<img width="400" alt="Confession Example" src="https://github.com/user-attachments/assets/bf038c44-4ee2-4235-a3c3-dad0fa4c83e5" />
-<img width="400" alt="Secrets registered in Vault" src="https://github.com/user-attachments/assets/7a2fe018-6ae5-4719-922f-f5db979cd17c" />
 
 
 ---

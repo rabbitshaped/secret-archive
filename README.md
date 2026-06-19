@@ -138,6 +138,6 @@ Run this in PostgreSQL:
 );`
 
 ### 5. Start the application 
-```npm start```
+```node index.js```
 Then open
 `http://localhost:3000`
